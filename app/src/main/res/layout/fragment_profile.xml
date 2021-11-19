@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    tools:context=".ProfileFragment">
+    tools:context=".ui.ProfileFragment">
 
     <androidx.appcompat.widget.Toolbar
         app:layout_constraintTop_toTopOf="parent"
@@ -68,7 +68,7 @@
         android:id="@+id/posts_count_text"
         style="@style/profile_text_count"
         tools:text="50"
-        app:layout_constraintBottom_toTopOf="@id/edit_profile_btn"
+        app:layout_constraintBottom_toTopOf="@id/posts_text"
         app:layout_constraintEnd_toEndOf="@id/posts_text"
         app:layout_constraintStart_toStartOf="@id/posts_text"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
@@ -114,7 +114,7 @@
         app:layout_constraintEnd_toEndOf="@id/edit_profile_btn"
         app:layout_constraintStart_toEndOf="@id/followers_text" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/edit_profile_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -139,9 +139,7 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/top_border_grey"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_profile_btn">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@id/edit_profile_btn"/>
 
 
 

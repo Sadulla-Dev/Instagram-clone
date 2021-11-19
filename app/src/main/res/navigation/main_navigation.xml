@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/likesFragment"
-        android:name="com.example.instagram_clone.LikesFragment"
+        android:name="com.example.instagram_clone.ui.LikesFragment"
         android:label="fragment_likes"
         tools:layout="@layout/fragment_likes" />
     <fragment
         android:id="@+id/shareFragment"
-        android:name="com.example.instagram_clone.ShareFragment"
+        android:name="com.example.instagram_clone.ui.ShareFragment"
         android:label="fragment_share"
         tools:layout="@layout/fragment_share" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.instagram_clone.ProfileFragment"
+        android:name="com.example.instagram_clone.ui.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -26,22 +26,23 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.instagram_clone.SearchFragment"
+        android:name="com.example.instagram_clone.ui.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.instagram_clone.HomeFragment"
+        android:name="com.example.instagram_clone.ui.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.example.instagram_clone.EditProfileFragment"
+        android:name="com.example.instagram_clone.ui.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" >
         <action
             android:id="@+id/action_editProfileFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
+
 
 </navigation>

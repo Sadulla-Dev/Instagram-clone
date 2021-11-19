@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.3194444444444444" />
         <entry key="app/src/main/res/drawable-anydpi/ic_more.xml" value="0.2675925925925926" />
         <entry key="app/src/main/res/drawable-mdpi/big_input_bg.xml" value="0.2675925925925926" />
         <entry key="app/src/main/res/drawable-mdpi/btn_bg.xml" value="0.2675925925925926" />
@@ -17,12 +18,19 @@
         <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.2653985507246377" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2653985507246377" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2653985507246377" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.2653985507246377" />
         <entry key="app/src/main/res/layout/fragment_edit_profile.xml" value="0.2653985507246377" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2653985507246377" />
         <entry key="app/src/main/res/layout/fragment_likes.xml" value="0.2653985507246377" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2653985507246377" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.2653985507246377" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2846701145321318" />
+        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.2653985507246377" />
+        <entry key="app/src/main/res/layout/fragment_register_email.xml" value="0.21979166666666666" />
+        <entry key="app/src/main/res/layout/fragment_register_name_pass.xml" value="0.2653985507246377" />
+        <entry key="app/src/main/res/layout/fragment_register_namepass.xml" value="0.21979166666666666" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.2653985507246377" />
         <entry key="app/src/main/res/layout/fragment_share.xml" value="0.2653985507246377" />
+        <entry key="app/src/main/res/layout/password_dialog.xml" value="0.3423913043478261" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.3880208333333333" />
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.21979166666666666" />
       </map>
