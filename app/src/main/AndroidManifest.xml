@@ -6,6 +6,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,6 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Instagramclone"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".ui.RegisterActivity"
             android:exported="false"
@@ -21,9 +26,7 @@
         <activity
             android:name=".ui.LoginActivity"
             android:exported="false"
-            android:windowSoftInputMode="stateVisible|adjustResize" >
-
-        </activity>
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
@@ -33,6 +36,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.instagram_clone.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

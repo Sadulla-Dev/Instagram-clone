@@ -2,17 +2,22 @@ package com.example.instagram_clone.ui
 
 
 
+import android.app.Activity.RESULT_OK
 import android.app.AlertDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.FileProvider
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.example.instagram_clone.R
 import com.example.instagram_clone.models.Users
 import com.google.firebase.auth.AuthCredential
@@ -25,6 +30,9 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import kotlinx.android.synthetic.main.password_dialog.view.*
+import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class EditProfileFragment : Fragment() {
@@ -33,6 +41,9 @@ class EditProfileFragment : Fragment() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mDatabase: DatabaseReference
     private lateinit var mStorage: StorageReference
+    private val REQUEST_IMAGE_CAPTURE = 1
+    private lateinit var mImageUri: Uri
+    val simpleDateFormat = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US)
     private val TAG = "EditProfileActivity"
 
     override fun onCreateView(
@@ -62,14 +73,12 @@ class EditProfileFragment : Fragment() {
             }
         }
 
-
-
+        change_photo_text.setOnClickListener { takeCameraPicture()}
         save_image.setOnClickListener {
             updateProfile()
             Navigation.findNavController(view)
                 .navigate(R.id.action_editProfileFragment_to_profileFragment)
         }
-
         val user = mAuth.currentUser
         mDatabase.child("users").child(user!!.uid)
             .addListenerForSingleValueEvent(ValueEventListenerAdapter {
@@ -81,6 +90,55 @@ class EditProfileFragment : Fragment() {
                 bio_input.setText(mUsers!!.bio, TextView.BufferType.EDITABLE)
                 phone_input.setText(mUsers!!.phone.toString(), TextView.BufferType.EDITABLE)
             })
+    }
+
+    private fun takeCameraPicture() {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        if (intent.resolveActivity(activity?.packageManager!!) != null) {
+            val imageFile = createImageFile()
+            mImageUri = FileProvider.getUriForFile(
+                requireActivity(),
+                "com.example.instagram_clone.fileprovider",
+                imageFile
+            )
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, mImageUri)
+            startActivityForResult(intent, REQUEST_IMAGE_CAPTURE)
+        } else {
+            requireActivity().showToast("Try again")
+        }
+
+    }
+
+
+    private fun createImageFile(): File {
+        val storageDir = activity?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        return File.createTempFile(
+            "JPEG_${simpleDateFormat.format(Date())}_",
+            ".jpg",
+            storageDir
+        )
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            val uid = mAuth.currentUser!!.uid
+            mStorage.child("users/$uid/photo").putFile(mImageUri).addOnCompleteListener {
+                if (it.isSuccessful) {
+                    mDatabase.child("users/$uid/photo").setValue(it.result?.downloadUrl.toString())
+                        .addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                Log.d(TAG, "onActivityResult: photo saved successfully ")
+                                Toast.makeText(requireActivity(), it.exception!!.message!!, Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(requireActivity(), it.exception!!.message!!, Toast.LENGTH_SHORT).show()
+                             }
+                        }
+                } else {
+                    Toast.makeText(requireActivity(), it.exception!!.message!!, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
     private fun addPasswordConfirm(password: String){
@@ -121,9 +179,6 @@ class EditProfileFragment : Fragment() {
             phone = phone_input.text.toString().toLong()
         )
     }
-
-
-
 
     private fun updateUser(user: Users) {
         val updatesMap = mutableMapOf<String, Any>()

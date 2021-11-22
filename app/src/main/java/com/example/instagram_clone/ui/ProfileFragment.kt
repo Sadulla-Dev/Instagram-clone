@@ -1,6 +1,7 @@
 package com.example.instagram_clone.ui
 
 import android.content.ContentValues
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -36,23 +37,24 @@ class ProfileFragment : Fragment() {
 
         edit_profile_btn.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_editProfileFragment)
+
         }
 
-        val auth = FirebaseAuth.getInstance()
-        val user = auth.currentUser
-        val database = FirebaseDatabase.getInstance().reference
-
-        database.child("users").child(user!!.uid).addListenerForSingleValueEvent(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val user = snapshot.getValue(Users::class.java)
-                username_text.setText(user!!.name, TextView.BufferType.EDITABLE)
-                posts_count_text.text = user.phone.toString()
-                followers_count_text.text = user.phone.toString()
-                following_count_text.text = user.phone.toString()
-            }
-            override fun onCancelled(error: DatabaseError) {
-                Log.e(ContentValues.TAG, "onCancelled: ",error.toException())
-            }
-        })
+//        val auth = FirebaseAuth.getInstance()
+//        val user = auth.currentUser
+//        val database = FirebaseDatabase.getInstance().reference
+//
+//        database.child("users").child(user!!.uid).addListenerForSingleValueEvent(object : ValueEventListener{
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                val user = snapshot.getValue(Users::class.java)
+//                username_text.setText(user!!.name, TextView.BufferType.EDITABLE)
+//                posts_count_text.text = user.phone.toString()
+//                followers_count_text.text = user.phone.toString()
+//                following_count_text.text = user.phone.toString()
+//            }
+//            override fun onCancelled(error: DatabaseError) {
+//                Log.e(ContentValues.TAG, "onCancelled: ",error.toException())
+//            }
+//        })
     }
 }
