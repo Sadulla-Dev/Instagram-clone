@@ -57,6 +57,7 @@ class LoginActivity : AppCompatActivity(), KeyboardVisibilityEventListener, View
             create_account_text.visibility = View.VISIBLE
         }
     }
+
     private fun validate(email: String,password:String) = email.isNotEmpty() && password.isNotEmpty()
 
 }

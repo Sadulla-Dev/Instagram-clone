@@ -24,6 +24,7 @@ class RegisterActivity : AppCompatActivity(),EmailFragment.Listener,NamePassFrag
     private var mEmail:String? = null
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mDatabase: DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -33,7 +34,6 @@ class RegisterActivity : AppCompatActivity(),EmailFragment.Listener,NamePassFrag
             supportFragmentManager.beginTransaction().add(R.id.framLayout, EmailFragment()).commit()
         }
     }
-
 
     override fun onNext(email: String) {
         if(email.isNotEmpty()){
@@ -88,13 +88,13 @@ class RegisterActivity : AppCompatActivity(),EmailFragment.Listener,NamePassFrag
             showToast("Please enter full name and password")
         }
     }
+
     private fun mkUserName(fullName: String):String = fullName.toLowerCase().replace(" ",".")
+
     private fun mkUser(fullName: String,email: String):Users{
         val userName = mkUserName(fullName)
         return Users(name = fullName,username = userName,email = email)
     }
-
-
 
 }
 

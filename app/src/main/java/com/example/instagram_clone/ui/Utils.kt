@@ -8,9 +8,13 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.bumptech.glide.Glide
+import com.bumptech.glide.annotation.GlideModule
+import com.bumptech.glide.module.AppGlideModule
 import com.example.instagram_clone.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -29,6 +33,9 @@ fun Context.showToast(text:String,duration:Int = Toast.LENGTH_SHORT){
     Toast.makeText(this, text,duration).show()
 }
 
+@GlideModule
+class CustomGlideModule: AppGlideModule()
+
 fun coordinateBtnAndInputs(btn: Button, vararg inputs: EditText) {
     val watcher = object : TextWatcher {
         override fun afterTextChanged(s: Editable?) {
@@ -42,4 +49,9 @@ fun coordinateBtnAndInputs(btn: Button, vararg inputs: EditText) {
     }
     inputs.forEach { it.addTextChangedListener(watcher) }
     btn.isEnabled = inputs.all { it.text.isNotEmpty() }
+}
+
+fun Editable.toStringOrNull(): String?{
+    val str = toString()
+    return if (str.isEmpty()) null else str
 }
