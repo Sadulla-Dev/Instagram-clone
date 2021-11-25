@@ -1,17 +1,16 @@
-package com.example.instagram_clone.ui
+package com.example.instagram_clone.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener
 import com.example.instagram_clone.R
+import com.example.instagram_clone.ui.coordinateBtnAndInputs
+import com.example.instagram_clone.ui.showToast
 
 
 class LoginActivity : AppCompatActivity(), KeyboardVisibilityEventListener, View.OnClickListener {
@@ -43,7 +42,7 @@ class LoginActivity : AppCompatActivity(), KeyboardVisibilityEventListener, View
                 }
             }
             R.id.create_account_text -> {
-                startActivity(Intent(this,RegisterActivity::class.java))
+                startActivity(Intent(this, RegisterActivity::class.java))
                 finish()
             }
         }

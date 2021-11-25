@@ -1,4 +1,4 @@
-package com.example.instagram_clone.ui
+package com.example.instagram_clone.activities
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.instagram_clone.R
-import com.example.instagram_clone.models.Users
+import com.example.instagram_clone.models.User
+import com.example.instagram_clone.ui.coordinateBtnAndInputs
+import com.example.instagram_clone.ui.showToast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -19,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_register_email.email_input
 import kotlinx.android.synthetic.main.fragment_register_namepass.*
 import kotlinx.android.synthetic.main.fragment_register_namepass.password_input
 
-class RegisterActivity : AppCompatActivity(),EmailFragment.Listener,NamePassFragment.Listener{
+class RegisterActivity : AppCompatActivity(), EmailFragment.Listener, NamePassFragment.Listener {
     private val TAG = "RegisterActivity"
     private var mEmail:String? = null
     private lateinit var mAuth: FirebaseAuth
@@ -59,7 +61,6 @@ class RegisterActivity : AppCompatActivity(),EmailFragment.Listener,NamePassFrag
     override fun onRegister(fullName: String, password: String) {
         if (fullName.isNotEmpty() && password.isNotEmpty()){
             val email = mEmail
-
             if (email!= null) {
                 mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener{
                     if (it.isSuccessful){
@@ -67,7 +68,7 @@ class RegisterActivity : AppCompatActivity(),EmailFragment.Listener,NamePassFrag
                         val reference = mDatabase.child("users").child(it.result!!.user!!.uid)
                         reference.setValue(user).addOnCompleteListener{
                             if (it.isSuccessful){
-                                startActivity(Intent(this,MainActivity::class.java))
+                                startActivity(Intent(this, MainActivity::class.java))
                                 finish()
                             }else{
                                 Log.e(TAG, "failed to create user profile", it.exception)
@@ -91,9 +92,9 @@ class RegisterActivity : AppCompatActivity(),EmailFragment.Listener,NamePassFrag
 
     private fun mkUserName(fullName: String):String = fullName.toLowerCase().replace(" ",".")
 
-    private fun mkUser(fullName: String,email: String):Users{
+    private fun mkUser(fullName: String,email: String):User{
         val userName = mkUserName(fullName)
-        return Users(name = fullName,username = userName,email = email)
+        return User(name = fullName,username = userName,email = email)
     }
 
 }
@@ -123,7 +124,7 @@ class EmailFragment: Fragment(){
 }
 
 class NamePassFragment: Fragment() {
-    private lateinit var mListener:Listener
+    private lateinit var mListener: Listener
     interface Listener{
         fun onRegister(fullName: String,password:String)
     }

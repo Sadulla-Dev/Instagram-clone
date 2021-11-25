@@ -45,6 +45,11 @@
         <item name="android:textSize">19sp</item>
     </style>
 
+    <style name="toolbar_image">
+        <item name="android:layout_width">@dimen/toolbar_height</item>
+        <item name="android:layout_height">@dimen/toolbar_height</item>
+        <item name="android:padding">10dp</item>
+    </style>
     <style name="toolbar_text" parent="toolbar_title">
         <item name="android:textColor">@color/blue</item>
         <item name="android:layout_height">@dimen/toolbar_height</item>
