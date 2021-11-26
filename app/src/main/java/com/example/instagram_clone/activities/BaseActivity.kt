@@ -11,7 +11,7 @@ open class BaseActivity (val navNumber: Int) : AppCompatActivity() {
     val TAG = "BaseActivity"
 
     fun setupBottomNavigation() {
-        bottom_navigation.setOnNavigationItemSelectedListener {
+        bottom_navigation_view.setOnNavigationItemSelectedListener {
             val nextActivity =
                 when (it.itemId) {
                     R.id.homeFragment -> MainActivity::class.java
@@ -39,8 +39,8 @@ open class BaseActivity (val navNumber: Int) : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        if (bottom_navigation != null){
-            bottom_navigation.menu.getItem(navNumber).isChecked = false
+        if (bottom_navigation_view != null){
+            bottom_navigation_view.menu.getItem(navNumber).isChecked = false
         }
     }
 }

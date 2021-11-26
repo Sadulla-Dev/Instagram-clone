@@ -31,9 +31,15 @@ class ProfileActivity : BaseActivity(4) {
         edit_profile_btn.setOnClickListener {
             startActivity(Intent(this, EditProfileActivity::class.java))
         }
+        settings_image.setOnClickListener {
+            startActivity(Intent(this, ProfileSettingActivity::class.java))
+        }
+
+        add_friends_image.setOnClickListener { startActivity(Intent(this, AddFriendsActivity::class.java)) }
 
         mFirebase = FirebaseHelper(this)
         mFirebase.currentUserReference().addValueEventListener(ValueEventListenerAdapter{
+
             mUser = it.getValue(User::class.java)!!
             profile_image.loadUserPhoto(mUser.photo)
             username_text.text = mUser.name

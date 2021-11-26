@@ -33,15 +33,7 @@ class EditProfileActivity : AppCompatActivity(),PasswordDialog.Listener {
 
         mCamera = CameraHelper(this)
 
-        back_image.setOnClickListener {
-            mAuth.signOut()
-        }
-        mAuth.addAuthStateListener {
-            if (it.currentUser == null){
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
-            }
-        }
+
         change_photo_text.setOnClickListener { mCamera.takeCameraPicture()}
         save_image.setOnClickListener { updateProfile() }
 

@@ -40,6 +40,8 @@ fun ImageView.loadUserPhoto(photoUrl: String?){
         Glide.with(this).load(photoUrl).fallback(R.drawable.person).into(this)
     }
 }
-
+fun ImageView.loadImage(image:String){
+    Glide.with(this).load(image).centerCrop().into(this)
+}
 
 

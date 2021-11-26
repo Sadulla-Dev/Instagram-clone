@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.3194444444444444" />
         <entry key="app/src/main/res/drawable-anydpi/ic_more.xml" value="0.2675925925925926" />
+        <entry key="app/src/main/res/drawable-hdpi/grey_btn_bg.xml" value="0.30925925925925923" />
         <entry key="app/src/main/res/drawable-mdpi/big_input_bg.xml" value="0.2675925925925926" />
         <entry key="app/src/main/res/drawable-mdpi/btn_bg.xml" value="0.2675925925925926" />
         <entry key="app/src/main/res/drawable-mdpi/button_bg.xml" value="0.2675925925925926" />
@@ -15,16 +16,19 @@
         <entry key="app/src/main/res/drawable-mdpi/top_border_grey.xml" value="0.2675925925925926" />
         <entry key="app/src/main/res/drawable/home_selector.xml" value="0.2171875" />
         <entry key="app/src/main/res/drawable/share_selector.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/activity_add_friends.xml" value="0.29846014492753625" />
         <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.2653985507246377" />
         <entry key="app/src/main/res/layout/activity_likes.xml" value="0.28442028985507245" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2653985507246377" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2653985507246377" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.2971014492753623" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.28442028985507245" />
+        <entry key="app/src/main/res/layout/activity_profile_setting.xml" value="0.2109375" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.2653985507246377" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.28442028985507245" />
         <entry key="app/src/main/res/layout/activity_share.xml" value="0.28442028985507245" />
         <entry key="app/src/main/res/layout/activity_test.xml" value="0.28442028985507245" />
+        <entry key="app/src/main/res/layout/add_friends_item.xml" value="0.29846014492753625" />
         <entry key="app/src/main/res/layout/bottom_navigation_view.xml" value="0.28442028985507245" />
         <entry key="app/src/main/res/layout/feed_item.xml" value="0.21979166666666666" />
         <entry key="app/src/main/res/layout/fragment_edit_profile.xml" value="0.2653985507246377" />

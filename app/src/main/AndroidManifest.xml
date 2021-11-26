@@ -19,6 +19,12 @@
         android:theme="@style/Theme.Instagramclone"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.AddFriendsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ProfileSettingActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.ShareActivity"
             android:exported="false" />
         <activity
@@ -33,7 +39,6 @@
         <activity
             android:name=".ui.test"
             android:exported="false" />
-
         <activity
             android:name=".activities.EditProfileActivity"
             android:exported="false" />
@@ -45,7 +50,6 @@
             android:name=".activities.LoginActivity"
             android:exported="false"
             android:windowSoftInputMode="stateVisible|adjustResize" />
-
         <activity
             android:name=".activities.MainActivity"
             android:exported="true">
